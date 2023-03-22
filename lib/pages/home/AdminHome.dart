@@ -1,0 +1,46 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:flutter/material.dart';
+import 'package:shopping_store/consts.dart';
+import 'package:shopping_store/routes/routes.gr.dart';
+import 'package:shopping_store/widgets/appBarCustom.dart';
+import 'package:shopping_store/widgets/buttons/home-buttons.dart';
+
+class AdminHomeView extends StatefulWidget {
+  const AdminHomeView({Key? key}) : super(key: key);
+
+  @override
+  _AdminHomeViewState createState() => _AdminHomeViewState();
+}
+
+class _AdminHomeViewState extends State<AdminHomeView> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: appBarCustom(),
+      body: Container(
+        width: double.infinity,
+        margin: EdgeInsets.only(top: 50.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const Text(
+              "Admin Home",
+              style: TextStyle(
+                color: APP_COLOR,
+                fontWeight: FontWeight.bold,
+                fontSize: 30.0,
+              ),
+            ),
+            HomeButton(
+              title: "Add Items",
+              onPressed: () {
+                context.router.push(const LoginRoute());
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

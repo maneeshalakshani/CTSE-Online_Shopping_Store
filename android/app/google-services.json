@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "449892615895",
+    "project_id": "ctse-online-shopping-store",
+    "storage_bucket": "ctse-online-shopping-store.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:449892615895:android:3afb14dc8ae3a347fbd292",
+        "android_client_info": {
+          "package_name": "com.example.shopping_store"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "449892615895-evnrluuhjckglnfltfd57mnudnu2saum.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDw0aGZD42G8ur1rpxthp3CVm9ogA3hPYQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "449892615895-evnrluuhjckglnfltfd57mnudnu2saum.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_store/models/auth.dart';
 
-PreferredSizeWidget appBarCustom(){
+PreferredSizeWidget appBarCustom() {
   return AppBar(
-    backwardsCompatibility: false,
     title: const Text("Online Shopping Store"),
     actions: [
       IconButton(
         icon: Icon(Icons.home),
-        onPressed: (){
-
-        },
+        onPressed: () {},
       ),
       IconButton(
         icon: Icon(Icons.account_circle),
-        onPressed: (){
-
+        onPressed: () {
+          Auth().signOut();
         },
       )
     ],
