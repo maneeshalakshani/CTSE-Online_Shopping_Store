@@ -1,5 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:shopping_store/consts.dart';
+import 'package:shopping_store/functions/cart/cartFunctions.dart';
+import 'package:shopping_store/models/cart.dart';
 import 'package:shopping_store/pages/cart/cart-item.dart';
 import 'package:shopping_store/widgets/appBarCustom.dart';
 import 'package:shopping_store/widgets/buttons/normal-btn.dart';
@@ -35,10 +38,28 @@ class _CartViewState extends State<CartView> {
               height: 20,
             ),
             Flexible(
-              child: ListView.builder(
-                itemCount: 10,
-                itemBuilder: (context, index) {
-                  return CartItem();
+              child: StreamBuilder<QuerySnapshot>(
+                stream: CartFunction().getAllCarts(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasError) {
+                    return Text('Error ${snapshot.error}');
+                  }
+                  if (snapshot.hasData) {
+                    print(
+                        "Dcument -> ${snapshot.data?.docs[0].get("cartItemList")}");
+                    return ListView.builder(
+                      itemCount:
+                          snapshot.data?.docs[0].get("cartItemList").length,
+                      itemBuilder: (context, index) {
+                        return CartItem(
+                          context: context,
+                          snapshot: snapshot.data?.docs[0].get("cartItemList"),
+                          index: index,
+                        );
+                      },
+                    );
+                  }
+                  return const Text("Loading...");
                 },
               ),
             ),

@@ -42,7 +42,6 @@ class _ItemListViewState extends State<ItemListView> {
                     return Text('Error ${snapshot.error}');
                   }
                   if (snapshot.hasData) {
-                    print("Dcument -> ${snapshot.data?.docs.length}");
                     return buildList(context, snapshot.data?.docs);
                   }
                   return const Text("Loading...");
