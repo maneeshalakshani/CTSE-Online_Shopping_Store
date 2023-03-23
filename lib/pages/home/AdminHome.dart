@@ -16,7 +16,7 @@ class _AdminHomeViewState extends State<AdminHomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBarCustom(),
+      appBar: appBarCustom(context),
       body: Container(
         width: double.infinity,
         margin: EdgeInsets.only(top: 50.0),
