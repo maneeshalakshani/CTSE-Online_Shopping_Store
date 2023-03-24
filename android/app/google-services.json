@@ -7,6 +7,78 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:449892615895:android:9d78fbb75947ac7afbd292",
+        "android_client_info": {
+          "package_name": "com.example.firebase_integration"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "449892615895-evnrluuhjckglnfltfd57mnudnu2saum.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDw0aGZD42G8ur1rpxthp3CVm9ogA3hPYQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "449892615895-evnrluuhjckglnfltfd57mnudnu2saum.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "449892615895-70q31digpan47lmpjtqdbk3t6nhpe6ah.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.shoppingStore"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:449892615895:android:11241db70f262b66fbd292",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "449892615895-evnrluuhjckglnfltfd57mnudnu2saum.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDw0aGZD42G8ur1rpxthp3CVm9ogA3hPYQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "449892615895-evnrluuhjckglnfltfd57mnudnu2saum.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "449892615895-70q31digpan47lmpjtqdbk3t6nhpe6ah.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.shoppingStore"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:449892615895:android:3afb14dc8ae3a347fbd292",
         "android_client_info": {
           "package_name": "com.example.shopping_store"
@@ -29,6 +101,13 @@
             {
               "client_id": "449892615895-evnrluuhjckglnfltfd57mnudnu2saum.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "449892615895-70q31digpan47lmpjtqdbk3t6nhpe6ah.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.shoppingStore"
+              }
             }
           ]
         }

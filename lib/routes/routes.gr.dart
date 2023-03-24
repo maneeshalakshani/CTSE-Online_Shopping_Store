@@ -24,6 +24,7 @@ import '../pages/see-outlets/AddOutlets.dart' as _i7;
 import '../pages/see-outlets/UpdateOutlet.dart' as _i9;
 import '../pages/see-outlets/ViewOutlets.dart' as _i8;
 import '../pages/WidgetTree.dart' as _i1;
+import '../pages//salesItem/salesItem.dart' as _i15;
 
 class AppRouter extends _i10.RootStackRouter {
   AppRouter([_i11.GlobalKey<_i11.NavigatorState>? navigatorKey])
@@ -89,6 +90,12 @@ class AppRouter extends _i10.RootStackRouter {
         ),
       );
     },
+    SalesItemRoute.name: (routeData) {
+      return _i10.MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const _i15.SalesItemsView(),
+      );
+    },
   };
 
   @override
@@ -128,6 +135,10 @@ class AppRouter extends _i10.RootStackRouter {
         _i10.RouteConfig(
           UpdateOutletRoute.name,
           path: '/update-outlet-view',
+        ),
+        _i10.RouteConfig(
+          SalesItemRoute.name,
+          path: '/sales-item-view',
         ),
       ];
 }
@@ -244,6 +255,18 @@ class UpdateOutletRoute extends _i10.PageRouteInfo<UpdateOutletRouteArgs> {
         );
 
   static const String name = 'UpdateOutletRoute';
+}
+
+/// generated route for
+/// [_i15.SalesItemsView]
+class SalesItemRoute extends _i10.PageRouteInfo<void> {
+  const SalesItemRoute()
+      : super(
+          SalesItemRoute.name,
+          path: '/sales-item-view',
+        );
+
+  static const String name = 'SalesItemRoute';
 }
 
 class UpdateOutletRouteArgs {
