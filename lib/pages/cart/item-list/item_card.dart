@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:shopping_store/consts.dart';
-import 'package:shopping_store/models/item.dart';
+import 'package:shopping_store/models/Item2.dart';
 import 'package:shopping_store/routes/routes.gr.dart';
 
 class ItemCard extends StatefulWidget {
@@ -19,7 +19,7 @@ class _ItemCardState extends State<ItemCard> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-    final item = Item.fromSnapshot(widget.data);
+    final item = Item2.fromSnapshot(widget.data);
 
     return Container(
       width: width,
