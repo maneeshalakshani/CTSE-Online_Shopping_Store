@@ -15,7 +15,7 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBarCustom(),
+      appBar: appBarCustom(context),
       body: Container(
         width: double.infinity,
         child: Column(
@@ -24,25 +24,25 @@ class _HomeViewState extends State<HomeView> {
           children: [
             HomeButton(
               title: "Add Items",
-              onPressed: (){
+              onPressed: () {
                 context.router.push(const LoginRoute());
               },
             ),
             HomeButton(
               title: "Add Deliveries",
-              onPressed: (){
+              onPressed: () {
                 context.router.push(const LoginRoute());
               },
             ),
             HomeButton(
               title: "Cart",
-              onPressed: (){
-                context.router.push(const LoginRoute());
+              onPressed: () {
+                context.router.push(const ItemListRoute());
               },
             ),
             HomeButton(
               title: "Add Categories",
-              onPressed: (){
+              onPressed: () {
                 context.router.push(const LoginRoute());
               },
             ),
