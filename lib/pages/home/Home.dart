@@ -16,43 +16,45 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBarCustom(context),
-      body: Container(
-        width: double.infinity,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            HomeButton(
-              title: "Add Items",
-              onPressed: () {
-                context.router.push(const LoginRoute());
-              },
-            ),
-            HomeButton(
-              title: "Add Deliveries",
-              onPressed: () {
-                context.router.push(const LoginRoute());
-              },
-            ),
-            HomeButton(
-              title: "Cart",
-              onPressed: () {
-                context.router.push(const ItemListRoute());
-              },
-            ),
-            HomeButton(
-              title: "Add Categories",
-              onPressed: () {
-                context.router.push(const LoginRoute());
-              },
-            ),
-            HomeButton(
-              title: "See Our Outlets",
-              onPressed: () {
-                context.router.push(const AllOutletsRoute());
-              },
-            ),
-          ],
+      body: SingleChildScrollView(
+        child: Container(
+          width: double.infinity,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              HomeButton(
+                title: "Add Items",
+                onPressed: () {
+                  context.router.push(const LoginRoute());
+                },
+              ),
+              HomeButton(
+                title: "Add Deliveries",
+                onPressed: () {
+                  context.router.push(const LoginRoute());
+                },
+              ),
+              HomeButton(
+                title: "Cart",
+                onPressed: () {
+                  context.router.push(const ItemListRoute());
+                },
+              ),
+              HomeButton(
+                title: "Add Categories",
+                onPressed: () {
+                  context.router.push(const LoginRoute());
+                },
+              ),
+              HomeButton(
+                title: "See Our Outlets",
+                onPressed: () {
+                  context.router.push(const AllOutletsRoute());
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
