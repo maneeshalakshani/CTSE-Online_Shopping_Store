@@ -32,7 +32,7 @@ class _AddOutletsViewState extends State<AddOutletsView> {
             key: formKey,
             child: Column(
               children: [
-                const CustomTitle(title: "See Our Outlets"),
+                const CustomTitle(title: "Add Outlets"),
                 customMessage(
                     msg:
                         "It is required for customers to know about the locations of the outlets. This will help them find out your locations"),

@@ -28,7 +28,10 @@ class AllOutletsViewState extends State<AllOutletsView> {
       appBar: appBarCustom(context),
       body: Column(
         children: [
-          const CustomTitle(title: "Outlets"),
+          const CustomTitle(
+            title: "See Our Outlets",
+            marginTop: 20,
+          ),
           Flexible(
             child: StreamBuilder<QuerySnapshot>(
               stream: OutletFunction().getAllOutlets(),
