@@ -78,15 +78,17 @@ class _OutletCardState extends State<OutletCard> {
                 onPressed: () {},
                 child: const Text("View"),
               ),
-              IconButton(
-                onPressed: () {
-                  context.router.push(UpdateOutletRoute(outlet: outlet));
-                },
-                icon: const Icon(
-                  Icons.update,
-                  color: Colors.green,
-                ),
-              ),
+              Auth().currentUser?.email == 'admin@gmail.com'
+                  ? IconButton(
+                      onPressed: () {
+                        context.router.push(UpdateOutletRoute(outlet: outlet));
+                      },
+                      icon: const Icon(
+                        Icons.update,
+                        color: Colors.green,
+                      ),
+                    )
+                  : const SizedBox(),
               Auth().currentUser?.email == 'admin@gmail.com'
                   ? IconButton(
                       onPressed: () {

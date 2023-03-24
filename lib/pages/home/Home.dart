@@ -46,6 +46,12 @@ class _HomeViewState extends State<HomeView> {
                 context.router.push(const LoginRoute());
               },
             ),
+            HomeButton(
+              title: "See Our Outlets",
+              onPressed: () {
+                context.router.push(const AllOutletsRoute());
+              },
+            ),
           ],
         ),
       ),
