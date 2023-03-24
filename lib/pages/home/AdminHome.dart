@@ -17,28 +17,42 @@ class _AdminHomeViewState extends State<AdminHomeView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBarCustom(context),
-      body: Container(
-        width: double.infinity,
-        margin: EdgeInsets.only(top: 50.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const Text(
-              "Admin Home",
-              style: TextStyle(
-                color: APP_COLOR,
-                fontWeight: FontWeight.bold,
-                fontSize: 30.0,
+      body: SingleChildScrollView(
+        child: Container(
+          width: double.infinity,
+          margin: EdgeInsets.only(top: 50.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const Text(
+                "Admin Home",
+                style: TextStyle(
+                  color: APP_COLOR,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 30.0,
+                ),
               ),
-            ),
-            HomeButton(
-              title: "Add Items",
-              onPressed: () {
-                context.router.push(const LoginRoute());
-              },
-            ),
-          ],
+              HomeButton(
+                title: "Add Items",
+                onPressed: () {
+                  context.router.push(const LoginRoute());
+                },
+              ),
+              HomeButton(
+                title: "Add Outlets",
+                onPressed: () {
+                  context.router.push(const AddOutletsRoute());
+                },
+              ),
+              HomeButton(
+                title: "View Outlets",
+                onPressed: () {
+                  context.router.push(const AllOutletsRoute());
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );

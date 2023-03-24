@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:shopping_store/functions/cart/itemListFunctions.dart';
-import 'package:shopping_store/models/item.dart';
+import 'package:shopping_store/models/Item2.dart';
 import 'package:shopping_store/pages/cart/item-list/item_card.dart';
 import 'package:shopping_store/widgets/appBarCustom.dart';
 
