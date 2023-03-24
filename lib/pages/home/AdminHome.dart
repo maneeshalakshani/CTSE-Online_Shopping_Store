@@ -38,6 +38,12 @@ class _AdminHomeViewState extends State<AdminHomeView> {
                 context.router.push(const LoginRoute());
               },
             ),
+            HomeButton(
+              title: "Add Outlets",
+              onPressed: () {
+                context.router.push(const AddOutletsRoute());
+              },
+            ),
           ],
         ),
       ),
