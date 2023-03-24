@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shopping_store/models/outlet.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class OutletFunction {
   String fireStoreCollectionName = "outlets";
@@ -52,5 +53,12 @@ class OutletFunction {
     FirebaseFirestore.instance.runTransaction((Transaction transaction) async {
       await transaction.delete(outlet.documentReference);
     });
+  }
+
+  static Future<void> lauchMap(
+      {required String latitude, required String longitude}) async {
+    String googleUrl =
+        'https://www.google.com/maps/search/?api=1&query=$latitude,$longitude';
+    await launch(googleUrl);
   }
 }

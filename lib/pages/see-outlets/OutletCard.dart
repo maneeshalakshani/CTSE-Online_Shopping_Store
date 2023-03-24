@@ -75,7 +75,11 @@ class _OutletCardState extends State<OutletCard> {
           Row(
             children: [
               TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  OutletFunction.lauchMap(
+                      latitude: outlet.coordinate1,
+                      longitude: outlet.coordinate2);
+                },
                 child: const Text("View"),
               ),
               Auth().currentUser?.email == 'admin@gmail.com'
