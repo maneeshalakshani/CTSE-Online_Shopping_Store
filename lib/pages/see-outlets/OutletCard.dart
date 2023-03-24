@@ -78,7 +78,7 @@ class _OutletCardState extends State<OutletCard> {
               ),
               IconButton(
                 onPressed: () {
-                  context.router.push(const CartRoute());
+                  context.router.push(UpdateOutletRoute(outlet: outlet));
                 },
                 icon: const Icon(
                   Icons.update,
