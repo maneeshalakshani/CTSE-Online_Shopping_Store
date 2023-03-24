@@ -2,6 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:shopping_store/consts.dart';
+import 'package:shopping_store/functions/outletFunctions.dart';
+import 'package:shopping_store/models/auth.dart';
 import 'package:shopping_store/models/outlet.dart';
 import 'package:shopping_store/routes/routes.gr.dart';
 
@@ -85,6 +87,17 @@ class _OutletCardState extends State<OutletCard> {
                   color: Colors.green,
                 ),
               ),
+              Auth().currentUser?.email == 'admin@gmail.com'
+                  ? IconButton(
+                      onPressed: () {
+                        OutletFunction().deleteOutlet(outlet: outlet);
+                      },
+                      icon: const Icon(
+                        Icons.delete,
+                        color: Colors.red,
+                      ),
+                    )
+                  : const SizedBox(),
             ],
           )
         ],
