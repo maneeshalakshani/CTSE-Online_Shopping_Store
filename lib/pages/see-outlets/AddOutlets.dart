@@ -1,4 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:shopping_store/functions/outletFunctions.dart';
+import 'package:shopping_store/routes/routes.gr.dart';
 import 'package:shopping_store/widgets/appBarCustom.dart';
 import 'package:shopping_store/widgets/buttons/normal-btn.dart';
 import 'package:shopping_store/widgets/customMessage.dart';
@@ -15,7 +18,8 @@ class AddOutletsView extends StatefulWidget {
 class _AddOutletsViewState extends State<AddOutletsView> {
   final formKey = GlobalKey<FormState>();
   TextEditingController locationController = TextEditingController();
-  TextEditingController coordinatesController = TextEditingController();
+  TextEditingController coordinatesController1 = TextEditingController();
+  TextEditingController coordinatesController2 = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -40,10 +44,17 @@ class _AddOutletsViewState extends State<AddOutletsView> {
                   validator: true,
                 ),
                 textFeild(
-                  label: "Location Co-ordinates",
-                  hintText: "Enter location coordinated",
-                  errorMsg: "Please enter location co-ordinates",
-                  controller: coordinatesController,
+                  label: "Location Co-ordinate 1",
+                  hintText: "Enter location coordinate 1",
+                  errorMsg: "Please enter location co-ordinate 1",
+                  controller: coordinatesController1,
+                  validator: true,
+                ),
+                textFeild(
+                  label: "Location Co-ordinate 2",
+                  hintText: "Enter location coordinate 2",
+                  errorMsg: "Please enter location co-ordinate 2",
+                  controller: coordinatesController2,
                   validator: true,
                 ),
                 normalButon(
@@ -51,8 +62,11 @@ class _AddOutletsViewState extends State<AddOutletsView> {
                   marginTop: 20,
                   onPressed: () {
                     if (formKey.currentState!.validate()) {
-                      print(locationController.text);
-                      print(coordinatesController.text);
+                      OutletFunction().createOutlet(
+                          location: locationController.text,
+                          coordinate1: coordinatesController1.text,
+                          coordinate2: coordinatesController2.text);
+                      context.router.push(const AllOutletsRoute());
                     }
                   },
                 )
