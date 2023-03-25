@@ -42,12 +42,6 @@ class _HomeViewState extends State<HomeView> {
                 },
               ),
               HomeButton(
-                title: "Add Categories",
-                onPressed: () {
-                  context.router.push(const LoginRoute());
-                },
-              ),
-              HomeButton(
                 title: "See Our Outlets",
                 onPressed: () {
                   context.router.push(const AllOutletsRoute());

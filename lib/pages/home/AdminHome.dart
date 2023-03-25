@@ -34,9 +34,9 @@ class _AdminHomeViewState extends State<AdminHomeView> {
                 ),
               ),
               HomeButton(
-                title: "Add Items",
+                title: "Add Categories",
                 onPressed: () {
-                  context.router.push(const LoginRoute());
+                  context.router.push(const ItemAppRoute());
                 },
               ),
               HomeButton(
