@@ -8,6 +8,7 @@ import 'package:shopping_store/pages/home/Home.dart';
 import 'package:shopping_store/pages/see-outlets/AddOutlets.dart';
 import 'package:shopping_store/pages/see-outlets/UpdateOutlet.dart';
 import 'package:shopping_store/pages/see-outlets/ViewOutlets.dart';
+import 'package:shopping_store/pages/welcome/Welcome.dart';
 
 /// Need to run the following command
 ///    flutter packages pub run build_runner watch --delete-conflicting-outputs
@@ -15,7 +16,8 @@ import 'package:shopping_store/pages/see-outlets/ViewOutlets.dart';
 @MaterialAutoRouter(
   replaceInRouteName: 'View,Route',
   routes: [
-    MaterialRoute(page: WidgetTreeView, initial: true),
+    MaterialRoute(page: WelcomeView, initial: true),
+    MaterialRoute(page: WidgetTreeView),
     MaterialRoute(page: LoginView),
     MaterialRoute(page: HomeView),
     MaterialRoute(page: AdminHomeView),
