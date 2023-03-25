@@ -68,7 +68,7 @@ class _UpdateOutletViewState extends State<UpdateOutletView> {
                   validator: true,
                 ),
                 normalButon(
-                  title: "Add Outlet",
+                  title: "Update Outlet",
                   marginTop: 20,
                   onPressed: () {
                     if (formKey.currentState!.validate()) {
