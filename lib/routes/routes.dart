@@ -8,6 +8,7 @@ import 'package:shopping_store/pages/home/Home.dart';
 import 'package:shopping_store/pages/see-outlets/AddOutlets.dart';
 import 'package:shopping_store/pages/see-outlets/UpdateOutlet.dart';
 import 'package:shopping_store/pages/see-outlets/ViewOutlets.dart';
+import 'package:shopping_store/pages/salesItem/salesItem.dart';
 
 /// Need to run the following command
 ///    flutter packages pub run build_runner watch --delete-conflicting-outputs
@@ -24,6 +25,7 @@ import 'package:shopping_store/pages/see-outlets/ViewOutlets.dart';
     MaterialRoute(page: AddOutletsView),
     MaterialRoute(page: AllOutletsView),
     MaterialRoute(page: UpdateOutletView),
+    MaterialRoute(page: SalesItemsView),
   ],
 )
 class $AppRouter {}

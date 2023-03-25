@@ -7,7 +7,11 @@ final _appRouter = AppRouter();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(options: FirebaseOptions( 
+    apiKey: "AIzaSyDw0aGZD42G8ur1rpxthp3CVm9ogA3hPYQ",
+    appId: "com.example.shopping_store",
+    messagingSenderId: "449892615895-evnrluuhjckglnfltfd57mnudnu2saum.apps.googleusercontent.com",
+    projectId: "ctse-online-shopping-store"));
 
   runApp(MaterialApp.router(
     debugShowCheckedModeBanner: false,

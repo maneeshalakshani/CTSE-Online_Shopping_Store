@@ -26,7 +26,7 @@ class _HomeViewState extends State<HomeView> {
               HomeButton(
                 title: "Add Items",
                 onPressed: () {
-                  context.router.push(const LoginRoute());
+                  context.router.push(const SalesItemRoute());
                 },
               ),
               HomeButton(
