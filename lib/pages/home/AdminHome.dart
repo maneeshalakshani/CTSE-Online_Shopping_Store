@@ -26,7 +26,7 @@ class _AdminHomeViewState extends State<AdminHomeView> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const Text(
-                "Admin Home",
+                "Welcome Admin",
                 style: TextStyle(
                   color: APP_COLOR,
                   fontWeight: FontWeight.bold,
@@ -35,18 +35,21 @@ class _AdminHomeViewState extends State<AdminHomeView> {
               ),
               HomeButton(
                 title: "Add Items",
+                imageUrl: "assets/book.jpg",
                 onPressed: () {
                   context.router.push(const LoginRoute());
                 },
               ),
               HomeButton(
                 title: "Add Outlets",
+                imageUrl: "assets/shop.png",
                 onPressed: () {
                   context.router.push(const AddOutletsRoute());
                 },
               ),
               HomeButton(
                 title: "View Outlets",
+                imageUrl: "assets/shop.png",
                 onPressed: () {
                   context.router.push(const AllOutletsRoute());
                 },

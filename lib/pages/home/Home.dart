@@ -25,30 +25,35 @@ class _HomeViewState extends State<HomeView> {
             children: [
               HomeButton(
                 title: "Add Items",
+                imageUrl: "assets/book.jpg",
                 onPressed: () {
                   context.router.push(const LoginRoute());
                 },
               ),
               HomeButton(
                 title: "Add Deliveries",
+                imageUrl: "assets/delivery.png",
                 onPressed: () {
                   context.router.push(const LoginRoute());
                 },
               ),
               HomeButton(
                 title: "Cart",
+                imageUrl: "assets/shop.png",
                 onPressed: () {
                   context.router.push(const ItemListRoute());
                 },
               ),
               HomeButton(
                 title: "Add Categories",
+                imageUrl: "assets/category.png",
                 onPressed: () {
                   context.router.push(const LoginRoute());
                 },
               ),
               HomeButton(
                 title: "See Our Outlets",
+                imageUrl: "assets/shop.png",
                 onPressed: () {
                   context.router.push(const AllOutletsRoute());
                 },
