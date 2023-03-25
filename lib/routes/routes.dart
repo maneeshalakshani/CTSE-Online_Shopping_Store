@@ -1,8 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:shopping_store/pages/WidgetTree.dart';
+import 'package:shopping_store/pages/about-us/AboutUs.dart';
 import 'package:shopping_store/pages/auth/login.dart';
 import 'package:shopping_store/pages/cart/cart-view.dart';
 import 'package:shopping_store/pages/cart/item-list/item_list_view.dart';
+import 'package:shopping_store/pages/contact-us/ContactUs.dart';
 import 'package:shopping_store/pages/home/AdminHome.dart';
 import 'package:shopping_store/pages/home/Home.dart';
 import 'package:shopping_store/pages/see-outlets/AddOutlets.dart';
@@ -26,6 +28,8 @@ import 'package:shopping_store/pages/welcome/Welcome.dart';
     MaterialRoute(page: AddOutletsView),
     MaterialRoute(page: AllOutletsView),
     MaterialRoute(page: UpdateOutletView),
+    MaterialRoute(page: ContactUsView),
+    MaterialRoute(page: AboutUsView),
   ],
 )
 class $AppRouter {}

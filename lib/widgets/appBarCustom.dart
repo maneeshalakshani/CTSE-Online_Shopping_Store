@@ -27,11 +27,15 @@ PreferredSizeWidget appBarCustom(BuildContext context) {
           return [
             PopupMenuItem(
               child: const Text("About"),
-              onTap: () {},
+              onTap: () {
+                context.router.push(const AboutUsRoute());
+              },
             ),
             PopupMenuItem(
               child: const Text("Contact"),
-              onTap: () {},
+              onTap: () {
+                context.router.push(const ContactUsRoute());
+              },
             ),
             PopupMenuItem(
               child: const Text("Sign out"),
