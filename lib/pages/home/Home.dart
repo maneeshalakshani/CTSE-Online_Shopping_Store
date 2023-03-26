@@ -24,15 +24,15 @@ class _HomeViewState extends State<HomeView> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               HomeButton(
-                title: "Add Items",
+                title: "View Items",
                 onPressed: () {
-                  context.router.push(const LoginRoute());
+                  context.router.push(const ItemListRoute());
                 },
               ),
               HomeButton(
-                title: "Add Deliveries",
+                title: "Delivery Management",
                 onPressed: () {
-                  context.router.push(const LoginRoute());
+                  context.router.push(const DeliveryRoute());
                 },
               ),
               HomeButton(
