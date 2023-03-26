@@ -6,6 +6,7 @@ import 'package:shopping_store/pages/cart/item-list/item_list_view.dart';
 import 'package:shopping_store/pages/home/AdminHome.dart';
 import 'package:shopping_store/pages/home/Category.dart';
 import 'package:shopping_store/pages/home/Home.dart';
+import 'package:shopping_store/pages/salesItem/SalesItem.dart';
 import 'package:shopping_store/pages/see-outlets/AddOutlets.dart';
 import 'package:shopping_store/pages/see-outlets/UpdateOutlet.dart';
 import 'package:shopping_store/pages/see-outlets/ViewOutlets.dart';
@@ -26,6 +27,7 @@ import 'package:shopping_store/pages/see-outlets/ViewOutlets.dart';
     MaterialRoute(page: AllOutletsView),
     MaterialRoute(page: UpdateOutletView),
     MaterialRoute(page: ItemAppView),
+    MaterialRoute(page: SalesItemsView),
   ],
 )
 class $AppRouter {}

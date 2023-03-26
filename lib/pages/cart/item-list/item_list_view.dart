@@ -4,6 +4,7 @@ import 'package:shopping_store/functions/cart/itemListFunctions.dart';
 import 'package:shopping_store/models/Item2.dart';
 import 'package:shopping_store/pages/cart/item-list/item_card.dart';
 import 'package:shopping_store/widgets/appBarCustom.dart';
+import 'package:shopping_store/widgets/title.dart';
 
 class ItemListView extends StatefulWidget {
   const ItemListView({super.key});
@@ -31,9 +32,10 @@ class _ItemListViewState extends State<ItemListView> {
         height: MediaQuery.of(context).size.height * 0.8,
         child: Column(
           children: [
-            const Text(
-              "List View",
-            ),
+            // const Text(
+            //   "List View",
+            // ),
+            const CustomTitle(title: "Item List", marginTop: 20.0,),
             Flexible(
               child: StreamBuilder<QuerySnapshot>(
                 stream: ItemList().getAllItems(),

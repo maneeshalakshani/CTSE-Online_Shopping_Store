@@ -34,9 +34,15 @@ class _AdminHomeViewState extends State<AdminHomeView> {
                 ),
               ),
               HomeButton(
-                title: "Add Categories",
+                title: "Categories Management",
                 onPressed: () {
                   context.router.push(const ItemAppRoute());
+                },
+              ),
+              HomeButton(
+                title: "Item Management",
+                onPressed: () {
+                  context.router.push(const SalesItemsRoute());
                 },
               ),
               HomeButton(
