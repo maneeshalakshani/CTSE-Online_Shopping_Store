@@ -1,7 +1,10 @@
+import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:shopping_store/models/delivery.dart';
 import 'package:shopping_store/widgets/appBarCustom.dart';
+import 'package:shopping_store/widgets/snack_bar.dart';
+import 'package:shopping_store/widgets/textField.dart';
 
 class DeliveryView extends StatefulWidget {
   const DeliveryView({super.key});
@@ -15,6 +18,8 @@ class _DeliveryViewState extends State<DeliveryView> {
   TextEditingController deliveryAddressController = TextEditingController();
   TextEditingController deliveryMethodController = TextEditingController();
   TextEditingController phoneNumberController = TextEditingController();
+
+  final formKey = GlobalKey<FormState>();
 
   bool isEditing = false;
   bool textFieldVisibility = false;
@@ -40,6 +45,11 @@ class _DeliveryViewState extends State<DeliveryView> {
             .collection(firestoreCollectionName)
             .doc()
             .set(delivery.toJson());
+        ScaffoldMessenger.of(context)..hideCurrentSnackBar()..showSnackBar(snackBar(
+                        msg: "Your Delivery Added Successfully...",
+                        title: "Add",
+                        contentType: ContentType.success,
+                      ));  
       });
     } catch (e) {
       print(e.toString());
@@ -55,6 +65,11 @@ class _DeliveryViewState extends State<DeliveryView> {
         'deliveryMethod': deliveryMethod,
         'phoneNumber': phoneNumber
       });
+      ScaffoldMessenger.of(context)..hideCurrentSnackBar()..showSnackBar(snackBar(
+                        msg: "Your Delivery Updated Successfully...",
+                        title: "Update",
+                        contentType: ContentType.success,
+                      )); 
     });
   }
 
@@ -77,6 +92,11 @@ class _DeliveryViewState extends State<DeliveryView> {
     FirebaseFirestore.instance.runTransaction((Transaction transaction) async {
       await transaction.delete(delivery.documentReference);
     });
+    ScaffoldMessenger.of(context)..hideCurrentSnackBar()..showSnackBar(snackBar(
+                        msg: "Your Delivery Deleted Successfully...",
+                        title: "Delete",
+                        contentType: ContentType.failure,
+                      )); 
   }
 
   Widget buildBody(BuildContext context) {
@@ -190,14 +210,16 @@ class _DeliveryViewState extends State<DeliveryView> {
       width: double.infinity,
       child: OutlinedButton(
         onPressed: () {
-          if (isEditing == true) {
-            updateIfEditing();
-          } else {
-            addDelivery();
+          if (formKey.currentState!.validate()) {
+            if (isEditing == true) {
+              updateIfEditing();
+            } else {
+              addDelivery();
+            }
+            setState(() {
+              textFieldVisibility = false;
+            });
           }
-          setState(() {
-            textFieldVisibility = false;
-          });
         },
         child: Text(isEditing ? "Update" : "Add"),
       ),
@@ -230,40 +252,67 @@ class _DeliveryViewState extends State<DeliveryView> {
               ],
             ),
             textFieldVisibility
-                ? Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      TextFormField(
-                        controller: nameController,
-                        decoration: const InputDecoration(
-                          labelText: "name",
+                ? Form(
+                  key: formKey,
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        textFeild(
+                          hintText: "name", 
+                          label: "Name", 
+                          controller: nameController, 
+                          validator: true,
+                          errorMsg: "Enter name",),
+                        textFeild(
+                          hintText: "delivryAddress", 
+                          label: "delivryAddress", 
+                          controller: deliveryAddressController, 
+                          validator: true,
+                          errorMsg: "Enter delivery address",),
+                        textFeild(
+                          hintText: "Delivery method", 
+                          label: "Delivery method", 
+                          controller: deliveryMethodController, 
+                          validator: true,
+                          errorMsg: "Enter delivery method",),
+                        textFeild(
+                          hintText: "Phone NUmber", 
+                          label: "Phone NUmber", 
+                          controller: phoneNumberController, 
+                          validator: true,
+                          errorMsg: "Enter Phone NUmber",),
+                        // TextFormField(
+                        //   controller: nameController,
+                        //   decoration: const InputDecoration(
+                        //     labelText: "name",
+                        //   ),
+                        // ),
+                        // TextFormField(
+                        //   controller: deliveryAddressController,
+                        //   decoration: const InputDecoration(
+                        //     labelText: "delivryAddress",
+                        //   ),
+                        // ),
+                        // TextFormField(
+                        //   controller: deliveryMethodController,
+                        //   decoration: const InputDecoration(
+                        //     labelText: "deliveryMethod",
+                        //   ),
+                        // ),
+                        // TextFormField(
+                        //   controller: phoneNumberController,
+                        //   decoration: const InputDecoration(
+                        //     labelText: "phoneNumber",
+                        //   ),
+                        // ),
+                        Padding(
+                          padding: EdgeInsets.only(top: 5, bottom: 5),
+                          child: button(),
                         ),
-                      ),
-                      TextFormField(
-                        controller: deliveryAddressController,
-                        decoration: const InputDecoration(
-                          labelText: "delivryAddress",
-                        ),
-                      ),
-                      TextFormField(
-                        controller: deliveryMethodController,
-                        decoration: const InputDecoration(
-                          labelText: "deliveryMethod",
-                        ),
-                      ),
-                      TextFormField(
-                        controller: phoneNumberController,
-                        decoration: const InputDecoration(
-                          labelText: "phoneNumber",
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(top: 5, bottom: 5),
-                        child: button(),
-                      ),
-                    ],
-                  )
+                      ],
+                    ),
+                )
                 : SizedBox(),
             Text("Delivery List"),
             SizedBox(

@@ -1,7 +1,24 @@
+import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:shopping_store/consts.dart';
 import 'package:shopping_store/models/salesItem.dart';
 import 'package:shopping_store/widgets/appBarCustom.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:shopping_store/widgets/snack_bar.dart';
+import 'package:shopping_store/widgets/textField.dart';
+
+// class SalesItemsView extends StatelessWidget {
+//   const SalesItemsView({Key? key}) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return const MaterialApp(
+//       debugShowCheckedModeBanner: false,
+//       home: SalesItemsViewPage(),
+//     );
+//   }
+// }
 
 class SalesItemsView extends StatefulWidget {
   const SalesItemsView({Key? key}) : super(key: key);
@@ -15,6 +32,8 @@ class _SalesItemsViewState extends State<SalesItemsView> {
   TextEditingController itemNameController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
   TextEditingController priceController = TextEditingController();
+  final formKey = GlobalKey<FormState>();
+
   bool isEditing = false;
   bool textFieldVisibility = false;
   String fireStoreCollectionName = "SalesItemsView";
@@ -30,6 +49,11 @@ class _SalesItemsViewState extends State<SalesItemsView> {
       FirebaseFirestore.instance.runTransaction(
          (Transaction transaction) async {
             await FirebaseFirestore.instance.collection(fireStoreCollectionName).doc().set(salesItem.toJson());
+            ScaffoldMessenger.of(context)..hideCurrentSnackBar()..showSnackBar(snackBar(
+              msg: "Your Item Added Successfully...",
+              title: "Add",
+              contentType: ContentType.success,
+            )); 
          }
       );
     }catch(e){
@@ -41,6 +65,11 @@ class _SalesItemsViewState extends State<SalesItemsView> {
     try{
       FirebaseFirestore.instance.runTransaction((transaction) async {
         await transaction.update(salesItem.documentReference, {'itemName': itemName, 'description': description, 'price': price});
+        ScaffoldMessenger.of(context)..hideCurrentSnackBar()..showSnackBar(snackBar(
+          msg: "Your Item Updated Successfully...",
+          title: "Update",
+          contentType: ContentType.success,
+        )); 
       });
     }catch(e){
       print(e.toString());
@@ -60,6 +89,11 @@ class _SalesItemsViewState extends State<SalesItemsView> {
     FirebaseFirestore.instance.runTransaction(
       (Transaction transaction) async {
         await transaction.delete(salesItem.documentReference);
+        ScaffoldMessenger.of(context)..hideCurrentSnackBar()..showSnackBar(snackBar(
+          msg: "Your Item Deleted Successfully...",
+          title: "Delete",
+          contentType: ContentType.failure,
+        ));
       }
     );
   }
@@ -76,8 +110,7 @@ class _SalesItemsViewState extends State<SalesItemsView> {
           return buildList(context, snapshot.data?.docs);
         }
         // return const SizedBox();
-        // return buildList(context, snapshot.data?.docs);
-        return const Text("Loading...");
+        return const Text("Page Loading...");
       },
     );
   }
@@ -159,15 +192,21 @@ class _SalesItemsViewState extends State<SalesItemsView> {
     return SizedBox(
       width: double.infinity,
       child: OutlinedButton(
+        style: OutlinedButton.styleFrom(
+          backgroundColor: APP_COLOR,
+          foregroundColor: Colors.white,
+        ),
         onPressed: () {
-          if(isEditing == true){
-            updateIfEditing();
-          }else{
-            addSalesItem();
+          if (formKey.currentState!.validate()) {
+            if(isEditing == true){
+              updateIfEditing();
+            }else{
+              addSalesItem();
+            }
+            setState(() {
+              textFieldVisibility = false;
+            });
           }
-          setState(() {
-            textFieldVisibility = false;
-          });
         },
         child: Text(isEditing ? "Update" : "Add"),
       ),
@@ -177,8 +216,8 @@ class _SalesItemsViewState extends State<SalesItemsView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
       appBar: appBarCustom(context),
+      resizeToAvoidBottomInset: false,
       body: Container(
         padding: EdgeInsets.all(8),
         child: Column(
@@ -200,34 +239,55 @@ class _SalesItemsViewState extends State<SalesItemsView> {
               ],
             ),
             textFieldVisibility
-                ? Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      TextFormField(
-                        controller: itemNameController,
-                        decoration: const InputDecoration(
-                          labelText: "Item Name",
+                ? Form(
+                  key: formKey,
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        textFeild(
+                          hintText: "Item Name", 
+                          label: "Item Name", 
+                          controller: itemNameController, 
+                          validator: true,
+                          errorMsg: "Please enter item name",),
+                        textFeild(
+                          hintText: "Item Description", 
+                          label: "Item Description", 
+                          controller: descriptionController, 
+                          validator: true,
+                          errorMsg: "Please enter description",),
+                        textFeild(
+                          hintText: "Item Price", 
+                          label: "Item Price", 
+                          controller: priceController, 
+                          validator: true,
+                          errorMsg: "Please enter item price",),
+                        // TextFormField(
+                        //   controller: itemNameController,
+                        //   decoration: const InputDecoration(
+                        //     labelText: "Item Name",
+                        //   ),
+                        // ),
+                        // TextFormField(
+                        //   controller: descriptionController,
+                        //   decoration: const InputDecoration(
+                        //     labelText: "Item Description",
+                        //   ),
+                        // ),
+                        // TextFormField(
+                        //   controller: priceController,
+                        //   decoration: const InputDecoration(
+                        //     labelText: "Item Price",
+                        //   ),
+                        // ),
+                        Padding(
+                          padding: EdgeInsets.only(top: 5, bottom: 5),
+                          child: button(),
                         ),
-                      ),
-                      TextFormField(
-                        controller: descriptionController,
-                        decoration: const InputDecoration(
-                          labelText: "Item Description",
-                        ),
-                      ),
-                      TextFormField(
-                        controller: priceController,
-                        decoration: const InputDecoration(
-                          labelText: "Item Price",
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(top: 5, bottom: 5),
-                        child: button(),
-                      ),
-                    ],
-                  )
+                      ],
+                    ),
+                )
                 : SizedBox(),
             Text("Sales Item List"),
             SizedBox(

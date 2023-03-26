@@ -20,7 +20,7 @@ class _AdminHomeViewState extends State<AdminHomeView> {
       body: SingleChildScrollView(
         child: Container(
           width: double.infinity,
-          margin: EdgeInsets.only(top: 50.0),
+          margin: EdgeInsets.only(top: 30.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -33,6 +33,10 @@ class _AdminHomeViewState extends State<AdminHomeView> {
                   fontSize: 30.0,
                 ),
               ),
+              Container(
+                margin: EdgeInsets.fromLTRB(90, 20, 90, 20),
+                child: Image.asset("assets/home.jpg")
+              ),
               HomeButton(
                 title: "Categories Management",
                 onPressed: () {
@@ -42,7 +46,7 @@ class _AdminHomeViewState extends State<AdminHomeView> {
               HomeButton(
                 title: "Item Management",
                 onPressed: () {
-                  context.router.push(const SalesItemsRoute());
+                  context.router.push(const SalesHomeRoute());
                 },
               ),
               HomeButton(

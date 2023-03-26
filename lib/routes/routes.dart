@@ -10,7 +10,9 @@ import 'package:shopping_store/pages/help/Help.dart';
 import 'package:shopping_store/pages/home/AdminHome.dart';
 import 'package:shopping_store/pages/home/Category.dart';
 import 'package:shopping_store/pages/home/Home.dart';
+import 'package:shopping_store/pages/salesItem/SalesHome.dart';
 import 'package:shopping_store/pages/salesItem/SalesItem.dart';
+import 'package:shopping_store/pages/salesItem/SalesItemList.dart';
 import 'package:shopping_store/pages/see-outlets/AddOutlets.dart';
 import 'package:shopping_store/pages/see-outlets/UpdateOutlet.dart';
 import 'package:shopping_store/pages/see-outlets/ViewOutlets.dart';
@@ -33,11 +35,13 @@ import 'package:shopping_store/pages/welcome/Welcome.dart';
     MaterialRoute(page: AllOutletsView),
     MaterialRoute(page: UpdateOutletView),
     MaterialRoute(page: ItemAppView),
-    MaterialRoute(page: SalesItemsView),
     MaterialRoute(page: DeliveryView),
     MaterialRoute(page: ContactUsView),
     MaterialRoute(page: AboutUsView),
     MaterialRoute(page: HelpView),
+    MaterialRoute(page: SalesItemListView),
+    MaterialRoute(page: SalesItemsView),
+    MaterialRoute(page: SalesHomeView),
   ],
 )
 class $AppRouter {}

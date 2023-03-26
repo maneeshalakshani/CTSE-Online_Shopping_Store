@@ -32,7 +32,7 @@ PreferredSizeWidget appBarCustom(BuildContext context) {
               },
             ),
             PopupMenuItem(
-              child: const Text("Help"),
+              child: const Text("Terms & Conditions"),
               onTap: () {
                 context.router.push(const HelpRoute());
               },

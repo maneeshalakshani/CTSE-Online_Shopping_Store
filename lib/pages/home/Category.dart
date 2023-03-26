@@ -1,8 +1,11 @@
+import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:shopping_store/consts.dart';
 import 'package:shopping_store/widgets/appBarCustom.dart';
+import 'package:shopping_store/widgets/snack_bar.dart';
+import 'package:shopping_store/widgets/textField.dart';
 import '../../models/item.dart';
 
 // void main() async {categorySection
@@ -47,6 +50,7 @@ class _ItemFireBaseDemoState extends State<ItemFireBaseDemo> {
   String firststoreCollectionName = "Item";
 
   late Item currentItem;
+  final formKey = GlobalKey<FormState>();
 
   getAllItem() {
     return FirebaseFirestore.instance
@@ -99,6 +103,11 @@ class _ItemFireBaseDemoState extends State<ItemFireBaseDemo> {
   deleteItem(Item item) {
     FirebaseFirestore.instance.runTransaction((Transaction transaction) async {
       await transaction.delete(item.documentReference);
+      ScaffoldMessenger.of(context)..hideCurrentSnackBar()..showSnackBar(snackBar(
+                        msg: "Your Category Deleted Successfully...",
+                        title: "Delete",
+                        contentType: ContentType.failure,
+                      ));
     });
   }
 
@@ -199,15 +208,27 @@ class _ItemFireBaseDemoState extends State<ItemFireBaseDemo> {
         ),
         child: Text(isEditing ? "UPDATE" : "ADD"),
         onPressed: () {
+          if (formKey.currentState!.validate()) {
           if (isEditing == true) {
             updateIfEditing();
+            ScaffoldMessenger.of(context)..hideCurrentSnackBar()..showSnackBar(snackBar(
+                        msg: "Your Category Updated Successfully...",
+                        title: "Update",
+                        contentType: ContentType.success,
+                      ));  
           } else {
             addItem();
+            ScaffoldMessenger.of(context)..hideCurrentSnackBar()..showSnackBar(snackBar(
+                        msg: "Your Category Added Successfully...",
+                        title: "Add",
+                        contentType: ContentType.success,
+                      )); 
           }
 
           setState(() {
             textFieldVisibility = false;
           });
+        }
         },
       ),
     );
@@ -234,52 +255,67 @@ class _ItemFireBaseDemoState extends State<ItemFireBaseDemo> {
       // appBar: appBarCustom(context),
       body: Container(
         padding: EdgeInsets.all(19),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            textFieldVisibility
-                ? Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      Column(
-                        children: <Widget>[
-                          TextFormField(
-                            controller: itemCategorieNameController,
-                            decoration: InputDecoration(
-                                labelText: "Category",
-                                hintText: "Enter Category Name"),
-                          ),
-                          TextFormField(
-                            controller: categorySectionController,
-                            decoration: InputDecoration(
-                                labelText: "Category Section",
-                                hintText: "Enter Category Section"),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      button()
-                    ],
-                  )
-                : Container(),
-            SizedBox(
-              height: 20,
-            ),
-            Text(
-              "Items",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Flexible(
-              child: buildBody(context),
-            )
-          ],
+        child: Form(
+          key: formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              textFieldVisibility
+                  ? Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        Column(
+                          children: <Widget>[
+                            // TextFormField(
+                            //   controller: itemCategorieNameController,
+                            //   decoration: InputDecoration(
+                            //       labelText: "Category",
+                            //       hintText: "Enter Category Name"),
+                            // ),
+                            // TextFormField(
+                            //   controller: categorySectionController,
+                            //   decoration: InputDecoration(
+                            //       labelText: "Category Section",
+                            //       hintText: "Enter Category Section"),
+                            // ),
+                            textFeild(
+                              hintText: "Enter Category Name", 
+                              label: "Category", 
+                              controller: itemCategorieNameController, 
+                              validator: true,
+                              errorMsg: "Enter Category",),
+                            textFeild(
+                              hintText: "Enter Category Section", 
+                              label: "Category Section", 
+                              controller: categorySectionController, 
+                              validator: true,
+                              errorMsg: "Enter Category Section",),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        button()
+                      ],
+                    )
+                  : Container(),
+              SizedBox(
+                height: 20,
+              ),
+              Text(
+                "Items",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Flexible(
+                child: buildBody(context),
+              )
+            ],
+          ),
         ),
       ),
     );

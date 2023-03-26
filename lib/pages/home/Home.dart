@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:shopping_store/routes/routes.gr.dart';
 import 'package:shopping_store/widgets/appBarCustom.dart';
 import 'package:shopping_store/widgets/buttons/home-buttons.dart';
+import 'package:shopping_store/widgets/title.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -23,6 +24,14 @@ class _HomeViewState extends State<HomeView> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              Container(
+                margin: EdgeInsets.symmetric(vertical: 20),
+                child: CustomTitle(title: "User Home")
+              ),
+              Container(
+                margin: EdgeInsets.fromLTRB(90, 20, 90, 20),
+                child: Image.asset("assets/aa.jpg")
+              ),
               HomeButton(
                 title: "View Items",
                 onPressed: () {

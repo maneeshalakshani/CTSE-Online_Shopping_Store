@@ -22,7 +22,7 @@ class WelcomeView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const Text(
-              "Welcome to Our Shop",
+              "Welcome to My Brand",
               style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
