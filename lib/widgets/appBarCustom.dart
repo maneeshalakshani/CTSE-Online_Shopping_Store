@@ -32,6 +32,12 @@ PreferredSizeWidget appBarCustom(BuildContext context) {
               },
             ),
             PopupMenuItem(
+              child: const Text("Help"),
+              onTap: () {
+                context.router.push(const HelpRoute());
+              },
+            ),
+            PopupMenuItem(
               child: const Text("Sign out"),
               onTap: () {
                 Auth().signOut();

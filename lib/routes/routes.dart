@@ -6,6 +6,7 @@ import 'package:shopping_store/pages/cart/cart-view.dart';
 import 'package:shopping_store/pages/cart/item-list/item_list_view.dart';
 import 'package:shopping_store/pages/contact-us/ContactUs.dart';
 import 'package:shopping_store/pages/delivery/Delivery.dart';
+import 'package:shopping_store/pages/help/Help.dart';
 import 'package:shopping_store/pages/home/AdminHome.dart';
 import 'package:shopping_store/pages/home/Category.dart';
 import 'package:shopping_store/pages/home/Home.dart';
@@ -36,6 +37,7 @@ import 'package:shopping_store/pages/welcome/Welcome.dart';
     MaterialRoute(page: DeliveryView),
     MaterialRoute(page: ContactUsView),
     MaterialRoute(page: AboutUsView),
+    MaterialRoute(page: HelpView),
   ],
 )
 class $AppRouter {}
