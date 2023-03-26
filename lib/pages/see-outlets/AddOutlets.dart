@@ -1,10 +1,12 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:flutter/material.dart';
 import 'package:shopping_store/functions/outletFunctions.dart';
 import 'package:shopping_store/routes/routes.gr.dart';
 import 'package:shopping_store/widgets/appBarCustom.dart';
 import 'package:shopping_store/widgets/buttons/normal-btn.dart';
 import 'package:shopping_store/widgets/customMessage.dart';
+import 'package:shopping_store/widgets/snack_bar.dart';
 import 'package:shopping_store/widgets/textField.dart';
 import 'package:shopping_store/widgets/title.dart';
 
@@ -66,6 +68,11 @@ class _AddOutletsViewState extends State<AddOutletsView> {
                           location: locationController.text,
                           coordinate1: coordinatesController1.text,
                           coordinate2: coordinatesController2.text);
+                      ScaffoldMessenger.of(context)..hideCurrentSnackBar()..showSnackBar(snackBar(
+                        msg: "Your outlet Added Successfully...",
+                        title: "Add",
+                        contentType: ContentType.success,
+                      ));  
                       context.router.push(const AllOutletsRoute());
                     }
                   },

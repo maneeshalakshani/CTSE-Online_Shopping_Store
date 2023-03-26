@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:shopping_store/consts.dart';
@@ -6,6 +7,7 @@ import 'package:shopping_store/functions/outletFunctions.dart';
 import 'package:shopping_store/models/auth.dart';
 import 'package:shopping_store/models/outlet.dart';
 import 'package:shopping_store/routes/routes.gr.dart';
+import 'package:shopping_store/widgets/snack_bar.dart';
 
 class OutletCard extends StatefulWidget {
   const OutletCard({super.key, required this.context, required this.data});
@@ -97,6 +99,11 @@ class _OutletCardState extends State<OutletCard> {
                   ? IconButton(
                       onPressed: () {
                         OutletFunction().deleteOutlet(outlet: outlet);
+                        ScaffoldMessenger.of(context)..hideCurrentSnackBar()..showSnackBar(snackBar(
+                          msg: "Your outlet deleted Successfully...",
+                          title: "Deleted",
+                          contentType: ContentType.failure,
+                        ));
                       },
                       icon: const Icon(
                         Icons.delete,
