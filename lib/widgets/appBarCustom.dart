@@ -16,12 +16,32 @@ PreferredSizeWidget appBarCustom(BuildContext context) {
               : context.router.push(const HomeRoute());
         },
       ),
-      IconButton(
-        icon: Icon(Icons.account_circle),
-        onPressed: () {
-          Auth().signOut();
+      // IconButton(
+      //   icon: Icon(Icons.account_circle),
+      //   onPressed: () {
+      //     Auth().signOut();
+      //   },
+      // ),
+      PopupMenuButton(
+        itemBuilder: (BuildContext context) {
+          return [
+            PopupMenuItem(
+              child: const Text("About"),
+              onTap: () {},
+            ),
+            PopupMenuItem(
+              child: const Text("Contact"),
+              onTap: () {},
+            ),
+            PopupMenuItem(
+              child: const Text("Sign out"),
+              onTap: () {
+                Auth().signOut();
+              },
+            ),
+          ];
         },
-      )
+      ),
     ],
   );
 }
