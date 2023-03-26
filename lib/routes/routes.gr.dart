@@ -11,154 +11,165 @@
 // ignore_for_file: type=lint
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i13;
-import 'package:flutter/material.dart' as _i14;
+import 'package:auto_route/auto_route.dart' as _i14;
+import 'package:flutter/material.dart' as _i15;
 
-import '../models/outlet.dart' as _i15;
-import '../pages/auth/login.dart' as _i2;
-import '../pages/cart/cart-view.dart' as _i6;
-import '../pages/cart/item-list/item_list_view.dart' as _i5;
-import '../pages/delivery/Delivery.dart' as _i12;
-import '../pages/home/AdminHome.dart' as _i4;
-import '../pages/home/Category.dart' as _i10;
-import '../pages/home/Home.dart' as _i3;
-import '../pages/salesItem/SalesItem.dart' as _i11;
-import '../pages/see-outlets/AddOutlets.dart' as _i7;
-import '../pages/see-outlets/UpdateOutlet.dart' as _i9;
-import '../pages/see-outlets/ViewOutlets.dart' as _i8;
-import '../pages/WidgetTree.dart' as _i1;
+import '../models/outlet.dart' as _i16;
+import '../pages/auth/login.dart' as _i3;
+import '../pages/cart/cart-view.dart' as _i7;
+import '../pages/cart/item-list/item_list_view.dart' as _i6;
+import '../pages/delivery/Delivery.dart' as _i13;
+import '../pages/home/AdminHome.dart' as _i5;
+import '../pages/home/Category.dart' as _i11;
+import '../pages/home/Home.dart' as _i4;
+import '../pages/salesItem/SalesItem.dart' as _i12;
+import '../pages/see-outlets/AddOutlets.dart' as _i8;
+import '../pages/see-outlets/UpdateOutlet.dart' as _i10;
+import '../pages/see-outlets/ViewOutlets.dart' as _i9;
+import '../pages/welcome/Welcome.dart' as _i1;
+import '../pages/WidgetTree.dart' as _i2;
 
-class AppRouter extends _i13.RootStackRouter {
-  AppRouter([_i14.GlobalKey<_i14.NavigatorState>? navigatorKey])
+class AppRouter extends _i14.RootStackRouter {
+  AppRouter([_i15.GlobalKey<_i15.NavigatorState>? navigatorKey])
       : super(navigatorKey);
 
   @override
-  final Map<String, _i13.PageFactory> pagesMap = {
-    WidgetTreeRoute.name: (routeData) {
-      return _i13.MaterialPageX<dynamic>(
+  final Map<String, _i14.PageFactory> pagesMap = {
+    WelcomeRoute.name: (routeData) {
+      return _i14.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i1.WidgetTreeView(),
+        child: const _i1.WelcomeView(),
+      );
+    },
+    WidgetTreeRoute.name: (routeData) {
+      return _i14.MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const _i2.WidgetTreeView(),
       );
     },
     LoginRoute.name: (routeData) {
-      return _i13.MaterialPageX<dynamic>(
+      return _i14.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i2.LoginView(),
+        child: const _i3.LoginView(),
       );
     },
     HomeRoute.name: (routeData) {
-      return _i13.MaterialPageX<dynamic>(
+      return _i14.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i3.HomeView(),
+        child: const _i4.HomeView(),
       );
     },
     AdminHomeRoute.name: (routeData) {
-      return _i13.MaterialPageX<dynamic>(
+      return _i14.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i4.AdminHomeView(),
+        child: const _i5.AdminHomeView(),
       );
     },
     ItemListRoute.name: (routeData) {
-      return _i13.MaterialPageX<dynamic>(
+      return _i14.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i5.ItemListView(),
+        child: const _i6.ItemListView(),
       );
     },
     CartRoute.name: (routeData) {
-      return _i13.MaterialPageX<dynamic>(
+      return _i14.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i6.CartView(),
+        child: const _i7.CartView(),
       );
     },
     AddOutletsRoute.name: (routeData) {
-      return _i13.MaterialPageX<dynamic>(
+      return _i14.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i7.AddOutletsView(),
+        child: const _i8.AddOutletsView(),
       );
     },
     AllOutletsRoute.name: (routeData) {
-      return _i13.MaterialPageX<dynamic>(
+      return _i14.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i8.AllOutletsView(),
+        child: const _i9.AllOutletsView(),
       );
     },
     UpdateOutletRoute.name: (routeData) {
       final args = routeData.argsAs<UpdateOutletRouteArgs>();
-      return _i13.MaterialPageX<dynamic>(
+      return _i14.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: _i9.UpdateOutletView(
+        child: _i10.UpdateOutletView(
           key: args.key,
           outlet: args.outlet,
         ),
       );
     },
     ItemAppRoute.name: (routeData) {
-      return _i13.MaterialPageX<dynamic>(
+      return _i14.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: _i10.ItemAppView(),
+        child: _i11.ItemAppView(),
       );
     },
     SalesItemsRoute.name: (routeData) {
-      return _i13.MaterialPageX<dynamic>(
+      return _i14.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i11.SalesItemsView(),
+        child: const _i12.SalesItemsView(),
       );
     },
     DeliveryRoute.name: (routeData) {
-      return _i13.MaterialPageX<dynamic>(
+      return _i14.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i12.DeliveryView(),
+        child: const _i13.DeliveryView(),
       );
     },
   };
 
   @override
-  List<_i13.RouteConfig> get routes => [
-        _i13.RouteConfig(
-          WidgetTreeRoute.name,
+  List<_i14.RouteConfig> get routes => [
+        _i14.RouteConfig(
+          WelcomeRoute.name,
           path: '/',
         ),
-        _i13.RouteConfig(
+        _i14.RouteConfig(
+          WidgetTreeRoute.name,
+          path: '/widget-tree-view',
+        ),
+        _i14.RouteConfig(
           LoginRoute.name,
           path: '/login-view',
         ),
-        _i13.RouteConfig(
+        _i14.RouteConfig(
           HomeRoute.name,
           path: '/home-view',
         ),
-        _i13.RouteConfig(
+        _i14.RouteConfig(
           AdminHomeRoute.name,
           path: '/admin-home-view',
         ),
-        _i13.RouteConfig(
+        _i14.RouteConfig(
           ItemListRoute.name,
           path: '/item-list-view',
         ),
-        _i13.RouteConfig(
+        _i14.RouteConfig(
           CartRoute.name,
           path: '/cart-view',
         ),
-        _i13.RouteConfig(
+        _i14.RouteConfig(
           AddOutletsRoute.name,
           path: '/add-outlets-view',
         ),
-        _i13.RouteConfig(
+        _i14.RouteConfig(
           AllOutletsRoute.name,
           path: '/all-outlets-view',
         ),
-        _i13.RouteConfig(
+        _i14.RouteConfig(
           UpdateOutletRoute.name,
           path: '/update-outlet-view',
         ),
-        _i13.RouteConfig(
+        _i14.RouteConfig(
           ItemAppRoute.name,
           path: '/item-app-view',
         ),
-        _i13.RouteConfig(
+        _i14.RouteConfig(
           SalesItemsRoute.name,
           path: '/sales-items-view',
         ),
-        _i13.RouteConfig(
+        _i14.RouteConfig(
           DeliveryRoute.name,
           path: '/delivery-view',
         ),
@@ -166,20 +177,32 @@ class AppRouter extends _i13.RootStackRouter {
 }
 
 /// generated route for
-/// [_i1.WidgetTreeView]
-class WidgetTreeRoute extends _i13.PageRouteInfo<void> {
+/// [_i1.WelcomeView]
+class WelcomeRoute extends _i14.PageRouteInfo<void> {
+  const WelcomeRoute()
+      : super(
+          WelcomeRoute.name,
+          path: '/',
+        );
+
+  static const String name = 'WelcomeRoute';
+}
+
+/// generated route for
+/// [_i2.WidgetTreeView]
+class WidgetTreeRoute extends _i14.PageRouteInfo<void> {
   const WidgetTreeRoute()
       : super(
           WidgetTreeRoute.name,
-          path: '/',
+          path: '/widget-tree-view',
         );
 
   static const String name = 'WidgetTreeRoute';
 }
 
 /// generated route for
-/// [_i2.LoginView]
-class LoginRoute extends _i13.PageRouteInfo<void> {
+/// [_i3.LoginView]
+class LoginRoute extends _i14.PageRouteInfo<void> {
   const LoginRoute()
       : super(
           LoginRoute.name,
@@ -190,8 +213,8 @@ class LoginRoute extends _i13.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i3.HomeView]
-class HomeRoute extends _i13.PageRouteInfo<void> {
+/// [_i4.HomeView]
+class HomeRoute extends _i14.PageRouteInfo<void> {
   const HomeRoute()
       : super(
           HomeRoute.name,
@@ -202,8 +225,8 @@ class HomeRoute extends _i13.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i4.AdminHomeView]
-class AdminHomeRoute extends _i13.PageRouteInfo<void> {
+/// [_i5.AdminHomeView]
+class AdminHomeRoute extends _i14.PageRouteInfo<void> {
   const AdminHomeRoute()
       : super(
           AdminHomeRoute.name,
@@ -214,8 +237,8 @@ class AdminHomeRoute extends _i13.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i5.ItemListView]
-class ItemListRoute extends _i13.PageRouteInfo<void> {
+/// [_i6.ItemListView]
+class ItemListRoute extends _i14.PageRouteInfo<void> {
   const ItemListRoute()
       : super(
           ItemListRoute.name,
@@ -226,8 +249,8 @@ class ItemListRoute extends _i13.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i6.CartView]
-class CartRoute extends _i13.PageRouteInfo<void> {
+/// [_i7.CartView]
+class CartRoute extends _i14.PageRouteInfo<void> {
   const CartRoute()
       : super(
           CartRoute.name,
@@ -238,8 +261,8 @@ class CartRoute extends _i13.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i7.AddOutletsView]
-class AddOutletsRoute extends _i13.PageRouteInfo<void> {
+/// [_i8.AddOutletsView]
+class AddOutletsRoute extends _i14.PageRouteInfo<void> {
   const AddOutletsRoute()
       : super(
           AddOutletsRoute.name,
@@ -250,8 +273,8 @@ class AddOutletsRoute extends _i13.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i8.AllOutletsView]
-class AllOutletsRoute extends _i13.PageRouteInfo<void> {
+/// [_i9.AllOutletsView]
+class AllOutletsRoute extends _i14.PageRouteInfo<void> {
   const AllOutletsRoute()
       : super(
           AllOutletsRoute.name,
@@ -262,11 +285,11 @@ class AllOutletsRoute extends _i13.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i9.UpdateOutletView]
-class UpdateOutletRoute extends _i13.PageRouteInfo<UpdateOutletRouteArgs> {
+/// [_i10.UpdateOutletView]
+class UpdateOutletRoute extends _i14.PageRouteInfo<UpdateOutletRouteArgs> {
   UpdateOutletRoute({
-    _i14.Key? key,
-    required _i15.Outlet outlet,
+    _i15.Key? key,
+    required _i16.Outlet outlet,
   }) : super(
           UpdateOutletRoute.name,
           path: '/update-outlet-view',
@@ -285,9 +308,9 @@ class UpdateOutletRouteArgs {
     required this.outlet,
   });
 
-  final _i14.Key? key;
+  final _i15.Key? key;
 
-  final _i15.Outlet outlet;
+  final _i16.Outlet outlet;
 
   @override
   String toString() {
@@ -296,8 +319,8 @@ class UpdateOutletRouteArgs {
 }
 
 /// generated route for
-/// [_i10.ItemAppView]
-class ItemAppRoute extends _i13.PageRouteInfo<void> {
+/// [_i11.ItemAppView]
+class ItemAppRoute extends _i14.PageRouteInfo<void> {
   const ItemAppRoute()
       : super(
           ItemAppRoute.name,
@@ -308,8 +331,8 @@ class ItemAppRoute extends _i13.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i11.SalesItemsView]
-class SalesItemsRoute extends _i13.PageRouteInfo<void> {
+/// [_i12.SalesItemsView]
+class SalesItemsRoute extends _i14.PageRouteInfo<void> {
   const SalesItemsRoute()
       : super(
           SalesItemsRoute.name,
@@ -320,8 +343,8 @@ class SalesItemsRoute extends _i13.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i12.DeliveryView]
-class DeliveryRoute extends _i13.PageRouteInfo<void> {
+/// [_i13.DeliveryView]
+class DeliveryRoute extends _i14.PageRouteInfo<void> {
   const DeliveryRoute()
       : super(
           DeliveryRoute.name,
